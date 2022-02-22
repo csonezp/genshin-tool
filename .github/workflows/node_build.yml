@@ -39,7 +39,7 @@ jobs:
         # Remote host
         REMOTE_HOST: 124.222.82.25
         # Remote user
-        REMOTE_USER: ububtu
+        REMOTE_USER: ubuntu
 
         # Target directory
         TARGET: /home/ubuntu/app
