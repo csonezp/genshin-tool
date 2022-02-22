@@ -6,7 +6,7 @@
       check out the
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
-    <h3>HELLO</h3>
+    <h3>{{ token }}</h3>
     <ul>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank"
              rel="noopener">babel</a></li>
@@ -34,35 +34,24 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from "axios";
 
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data(){
+    return{
+      userId:666,
+      token:''
+    }
+  },
+  created() {
+    axios
+        .get('http://localhost/api')
+        .then(response => (this.token = response))
   }
-  // data(){
-  //   return{
-  //     userId:666,
-  //     token:''
-  //   }
-  // },
-  // created() {
-  //   axios.get('/user')
-  //       .then(function (response) {
-  //         // handle success
-  //         console.log(response);
-  //         this.token = response.data;
-  //       })
-  //       .catch(function (error) {
-  //         // handle error
-  //         console.log(error);
-  //       })
-  //       .then(function () {
-  //         // always executed
-  //       });
-  //
-  // }
 }
 </script>
 
