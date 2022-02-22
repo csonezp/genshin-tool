@@ -14,33 +14,32 @@
       <div class="field">
         <label class="label">暴击率</label>
         <div class="control">
-          <input class="input" type="text" placeholder="百分号前面的数字，例如70">
+          <input class="input" v-model="criticalChance" type="text" placeholder="百分号前面的数字，例如70">
         </div>
       </div>
 
       <div class="field">
         <label class="label">暴击伤害加成</label>
         <div class="control">
-          <input class="input" type="text" placeholder="百分号前面的数字，例如150">
+          <input class="input" v-model="criticalAddition" type="text" placeholder="百分号前面的数字，例如150">
         </div>
       </div>
 
       <div class="field">
         <label class="label">暴击伤害数值</label>
         <div class="control">
-          <input class="input" type="text" placeholder="实际暴击伤害的数值">
+          <input class="input" v-model="criticalDamage" type="text" placeholder="实际暴击伤害的数值">
         </div>
       </div>
 
       <div class="field">
         <label class="label">伤害期望</label>
         <div class="control">
-          <input class="input" readonly type="text" placeholder="计算后显示">
+          <input class="input" v-model="damageExpect" readonly type="text" placeholder="计算后显示">
         </div>
       </div>
 
-      <button id="submit" class="button is-primary">计算</button>
-
+      <button id="submit" @click="cal" class="button is-primary">计算</button>
 
 
     </div>
@@ -57,12 +56,19 @@ export default {
   },
   data() {
     return {
-      criticalChance: 0,
-      criticalAddition: 0,
-      criticalDamage: 0
+      criticalChance: '',
+      criticalAddition: '',
+      criticalDamage: '',
+      damageExpect: ''
     }
   },
-  created() {
+  methods: {
+    cal() {
+      let x = this.criticalDamage
+      let y = (100 + parseInt(this.criticalAddition)) / 100
+      let z = (10000 + parseInt(this.criticalChance) * parseInt(this.criticalAddition)) / 10000
+      this.damageExpect = parseInt(x / y * z)
+    }
 
   }
 }
