@@ -41,8 +41,6 @@ jobs:
         # Remote user
         REMOTE_USER: ububtu
 
-
         # Target directory
         TARGET: /home/ubuntu/app
-        # Arguments to pass to rsync
-        ARGS: "-avzr --delete" 
+
