@@ -32,12 +32,10 @@ jobs:
           npm install
           npm run build
     - name: ssh deploy
-      # You may pin to the exact commit or the version.
-      # uses: easingthemes/ssh-deploy@c711f2c3391cac2876bf4c833590077f02e4bcb8
       uses: easingthemes/ssh-deploy@v2.2.11
       with:
         # Private Key
-        SSH_PRIVATE_KEY: ${{ secrets.TENCENT_KEY }}
+        SSH_PRIVATE_KEY: ${{ secrets.NEW_GA_KEY }}
         # Remote host
         REMOTE_HOST: 124.222.82.25
         # Remote user
