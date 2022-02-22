@@ -26,10 +26,9 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
     - name: npm install and build
+      working-directory: ./page
       run: |
-          cd ./page
           npm install
           npm run build
             env:
