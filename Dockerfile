@@ -5,7 +5,6 @@ WORKDIR /app/page
 RUN npm install && npm run build
 
 
-
 FROM ubuntu
 
 # 复制前端打包产物
@@ -19,8 +18,8 @@ RUN apt-get update -yqq
 RUN DEBIAN_FRONTEND=noninteractive apt-get install python3 python3-pip python3-venv nginx-core nginx -y
 
 # 安装python库
-COPY requirements.txt ./
-RUN pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+COPY service/requirements.txt ./
+RUN pip install -r requirements.txt
 
 # 复制服务端代码
 COPY ./service ./
